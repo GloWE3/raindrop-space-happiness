@@ -1,0 +1,3 @@
+
+PASS @scope with external stylesheet
+

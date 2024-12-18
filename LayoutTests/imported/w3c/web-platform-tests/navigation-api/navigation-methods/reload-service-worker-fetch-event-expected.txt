@@ -1,0 +1,4 @@
+
+
+FAIL reload() appears as a reload to service worker fetch event handlers assert_equals: expected "method = GET, isReloadNavigation = false" but got "We can't use /common/blank.html because of scope restrictions.\n"
+

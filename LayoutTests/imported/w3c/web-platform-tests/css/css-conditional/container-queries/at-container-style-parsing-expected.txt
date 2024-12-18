@@ -1,0 +1,12 @@
+
+PASS style(--my-prop: foo)
+PASS style(--my-prop: foo - bar ())
+PASS style(not ((--foo: calc(10px + 2em)) and ((--foo: url(x)))))
+PASS style((--foo: bar) or (--bar: 10px))
+PASS style(--my-prop:)
+PASS style(--my-prop: )
+PASS style(--foo: bar !important)
+PASS style(--foo)
+PASS style(--foo: bar;)
+PASS style(style(--foo: bar))
+

@@ -1,0 +1,6 @@
+
+PASS Property ruby-align has initial value space-around
+PASS Property ruby-align inherits
+FAIL Property ruby-position has initial value alternate assert_equals: expected "alternate" but got "over"
+PASS Property ruby-position inherits
+

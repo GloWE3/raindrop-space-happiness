@@ -1,0 +1,4 @@
+CONSOLE MESSAGE: Error: error from onerror.js
+
+PASS AbstractWorker.onerror
+

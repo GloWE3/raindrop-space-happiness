@@ -1,0 +1,7 @@
+
+PASS Determine the local side send limitation (canSendSize) by offering a max-message-size of 0
+PASS Remote offer SDP missing max-message-size attribute
+PASS max-message-size with a (non-zero) value provided by the remote peer
+PASS Renegotiate max-message-size with various values provided by the remote peer
+PASS max-message-size with a (non-zero) value larger than canSendSize provided by the remote peer
+

@@ -1,0 +1,5 @@
+
+
+PASS CommandEvent propagates across shadow boundaries retargeting invoker
+PASS cross shadow CommandEvent retargets invoker to host element
+

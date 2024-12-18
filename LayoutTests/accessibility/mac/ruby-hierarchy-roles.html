@@ -1,0 +1,75 @@
+<!-- webkit-test-runner [ CSSBasedRubyEnabled=true ] -->
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+    <head>
+        <script src="../../resources/js-test-pre.js"></script>
+    </head>
+    <body>
+        <ruby id="rubyElemId">
+            <rb>basetext</rb>
+            <rp>(</rp>
+            <rt>rubytext</rt>
+            <rp>)</rp>
+        </ruby>
+        
+        <script>
+            if (window.accessibilityController) {
+                description("This tests that the ruby containers are exposed with the appropriate hierarchy and roles.")
+                // At the moment, this is implemented only for OSX.
+                var platform = accessibilityController.platformName;
+                if ("mac" == platform) {
+                    // Expected values for roles and subroles.
+                    var expectedRubyRole = "AXRole: AXGroup"; // all ruby containers have AXGroup role
+                    var expectedRubyInlineSubrole = "AXSubrole: AXRubyInline";
+                    var expectedRubyBlockSubrole = "AXSubrole: AXRubyBlock";
+                    var expectedRubyTextSubrole = "AXSubrole: AXRubyText";
+                    var expectedRubyBaseSubrole = "AXSubrole: AXRubyBase";
+                    
+                    // Try inline style first, block style second
+                    var rubyElem = document.getElementById("rubyElemId");
+                    shouldBeTrue("rubyElem != null");
+                    checkHierarchyAndRoles(rubyElem);
+                    
+                    rubyElem.style.position = "absolute";
+                    checkHierarchyAndRoles(rubyElem);
+                    
+                    function checkHierarchyAndRoles(rubyElem) {
+                        axRuby = window.accessibilityController.accessibleElementById("rubyElemId");
+                        shouldBeTrue("axRuby != null");
+                        role = axRuby.role;
+                        subrole = axRuby.subrole;
+                        shouldBe("role", "expectedRubyRole");
+                        if (rubyElem.style.position != "absolute") {
+                            shouldBe("subrole", "expectedRubyInlineSubrole");
+                        }
+                        else {
+                            shouldBe("subrole", "expectedRubyBlockSubrole");
+                            axRuby = axRuby.childAtIndex(0);
+                            role = axRuby.role;
+                            subrole = axRuby.subrole;
+                            shouldBe("role", "expectedRubyRole");
+                            shouldBe("subrole", "expectedRubyInlineSubrole");
+                        }
+
+                        // RubyBase
+                        axRubyBase = axRuby.childAtIndex(0);
+                        shouldBeTrue("axRubyBase != null");
+                        role = axRubyBase.role;
+                        subrole = axRubyBase.subrole;
+                        shouldBe("role", "expectedRubyRole");
+                        shouldBe("subrole", "expectedRubyBaseSubrole");
+
+                        // RubyText
+                        axRubyText = axRuby.childAtIndex(1);
+                        shouldBeTrue("axRubyText != null");
+                        role = axRubyText.role;
+                        subrole = axRubyText.subrole;
+                        shouldBe("role", "expectedRubyRole");
+                        shouldBe("subrole", "expectedRubyTextSubrole");
+                    }
+                }
+            }
+        </script>
+        <script src="../../resources/js-test-post.js"></script>
+    </body>
+</html>

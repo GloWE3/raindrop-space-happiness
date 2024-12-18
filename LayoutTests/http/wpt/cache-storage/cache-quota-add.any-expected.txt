@@ -1,0 +1,7 @@
+CONSOLE MESSAGE: Cache API operation failed: Quota exceeded
+CONSOLE MESSAGE: Cache API operation failed: Quota exceeded
+
+PASS Testing that cache.add checks against quota
+PASS Testing that cache.addAll checks against quota
+PASS Testing that caches.delete will reduce usage
+

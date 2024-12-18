@@ -1,0 +1,48 @@
+ <style>
+    canvas {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+    }
+</style>
+<body>
+    <p>This tests calling decode() for a animated image which is also an element in the DOM tree.</p>
+    <canvas id="canvas1"></canvas>
+    <canvas id="canvas2"></canvas>
+    <canvas id="canvas3"></canvas>
+    <canvas id="canvas4"></canvas>
+    <div></div>
+    <script>
+        if (window.internals && window.testRunner) {
+            internals.clearMemoryCache();
+            internals.settings.setAnimatedImageDebugCanvasDrawingEnabled(true);
+            testRunner.waitUntilDone();
+        }
+
+        var image = new Image;
+        var parent = document.querySelector("div");
+        parent.appendChild(image);
+
+        function drawImageInCanvas(image, canvasId) {
+            var canvas = document.querySelector(canvasId);
+            var context = canvas.getContext("2d");
+            context.drawImage(image, 0, 0, canvas.width, canvas.height);
+        }
+
+        image.onload = (() => {
+            drawImageInCanvas(image, "#canvas1");
+            image.decode().then(() => {
+                drawImageInCanvas(image, "#canvas2");
+                return image.decode();
+            }).then(() => {
+                drawImageInCanvas(image, "#canvas3");
+                return image.decode();
+            }).then(() => {
+                drawImageInCanvas(image, "#canvas4");
+                parent.remove();
+                testRunner.notifyDone();
+            });
+        });
+        image.src = "resources/animated-red-green-blue-repeat-2.gif";
+    </script>
+</body>

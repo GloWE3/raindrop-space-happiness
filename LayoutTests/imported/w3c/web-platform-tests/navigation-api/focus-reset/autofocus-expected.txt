@@ -1,0 +1,12 @@
+
+
+Harness Error (TIMEOUT), message = null
+
+TIMEOUT An element with autofocus, present before navigation, gets focused Test timed out
+NOTRUN Two elements with autofocus, present before navigation; the first gets focused
+NOTRUN An element with autofocus, present before navigation but disabled before finished, does not get focused
+NOTRUN An element with autofocus, present before navigation but with its autofocus attribute removed before finished, does not get focused
+NOTRUN Two elements with autofocus, present before navigation, but the first gets disabled; the second gets focused
+NOTRUN An element with autofocus, introduced between committed and finished, gets focused
+NOTRUN An element with autofocus, introduced after finished, does not get focused
+

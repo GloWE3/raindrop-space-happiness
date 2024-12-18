@@ -1,0 +1,27 @@
+Inactive label Do you like coffee?
+And checkboxes?
+Disabled checkbox
+Disabled input
+(GraphicsLayer
+  (anchor 0.00 0.00)
+  (bounds 800.00 600.00)
+  (children 1
+    (GraphicsLayer
+      (bounds 800.00 600.00)
+      (contentsOpaque 1)
+      (drawsContent 1)
+      (backgroundColor #FFFFFF)
+      (event region
+        (rect (0,0) width=800 height=600)
+
+      (interaction regions [
+        (guard (273,13) width=36 height=36),
+        (interaction (283,23) width=16 height=16)
+        (cornerRadius 5.00),
+        (interaction (30,52) width=260 height=42)
+        (cornerRadius 16.00)])
+      )
+    )
+  )
+)
+
