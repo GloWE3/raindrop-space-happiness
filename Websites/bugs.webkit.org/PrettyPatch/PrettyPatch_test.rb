@@ -37,7 +37,7 @@ class PrettyPatch_test < Test::Unit::TestCase
         result = nil
         patch_uri = get_patch_uri(id)
         begin
-            result = open(patch_uri) { |f| result = f.read }
+            result = URI.open(patch_uri) { |f| result = f.read }
         rescue => exception
             assert(false, "Fail to get patch " + patch_uri)
         end
