@@ -19,7 +19,7 @@
         "@rollup/plugin-node-resolve": "^15.0.2",
         "@rollup/plugin-terser": "^0.4.3",
         "http-server": "^14.1.1",
-        "rollup": "^3.23.0",
+        "rollup": "^4.31.0",
         "rollup-plugin-cleaner": "^1.0.0",
         "rollup-plugin-copy": "^3.4.0",
         "rollup-plugin-copy-merge": "^1.0.2",
